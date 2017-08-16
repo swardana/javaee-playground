@@ -1,0 +1,35 @@
+/* Layout ----------------------------------------------------------------------------------------------------------- */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+  padding-top: 5%;
+}
+
+body .warning-padding {
+	height: 30px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0 5px;
+    background-color: #f5f5f5;
+}
+
+blockquote {
+    position: relative;
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

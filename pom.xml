@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>id.swhp</groupId>
+    <artifactId>javaee-playground</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    
+    <name>JavaEE Playground</name>
+    <inceptionYear>2017</inceptionYear>
+    
+    <developers>
+        <developer>
+            <id>swhp</id>
+            <name>Sukma Wardana</name>
+            <email>sukma.wardana@mail.com</email>
+        </developer>
+    </developers>
+    
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- Omnifaces, develop JSF never easier without Omnifaces -->
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <finalName>javaee-playground</finalName>
+    </build>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
+    
+    <scm>
+        <url>https://github.com/swhp/javaee-playground</url>
+        <connection>scm:git:git@github.com:swhp/javaee-playground.git</connection>
+        <developerConnection>scm:git:git@github.com:swhp/javaee-playground.git</developerConnection>
+    </scm>
+</project>
