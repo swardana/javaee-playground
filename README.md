@@ -1,10 +1,10 @@
 # JavaEE Playground
-Show how to build JavaEE 7 (Soon JavaEE 8) web applications. Primarily designed
+Show how to build JavaEE 7 (Soon JavaEE 8) web applications with theme `library`. Primarily designed
 for Glassfish / Payara.
 
 ## Environment
 This project was designed to deploy into Payara Full Server 172  with PostgreSQL 9.6.
-I prepare the database schema (soon), and will fully use JDBC Connection Pool from Payara.
+I prepare the database schema ~~(soon)~~ on `src/main/resources/db/schema.sql`, and will fully use JDBC Connection Pool from Payara.
 Below is how the environment configured:
 
 ### Create PostgreSQL Database
@@ -14,6 +14,12 @@ Prepare user and database on PostgreSQL.
 CREATE USER demo WITH PASSWORD 'password';
 CREATE DATABASE javaee_playground OWNER demo ENCODING 'UTF-8';
 GRANT ALL PRIVILEGES ON DATABASE javaee_playground TO demo;
+```
+
+To execute database schema from command line:
+
+```
+psql -U demo -d javaee_playground -a -f src/main/resources/db/schema.sql
 ```
 
 ### Add PostgreSQL JDBC driver
