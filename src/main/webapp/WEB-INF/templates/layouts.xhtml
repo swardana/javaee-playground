@@ -1,0 +1,86 @@
+<!-- To use HTML entity such as copy, space, etc you need to define it here -->
+<!DOCTYPE html [<!ENTITY nbsp "&#160;"> <!ENTITY copy "&#169;"> <!ENTITY bull "&#8226;">]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:of="http://omnifaces.org/functions"
+      xmlns:o="http://omnifaces.org/ui">
+
+    <!-- define variable with value from PROJECT_STAGE as development -->
+    <ui:param value="#{faces.development}" name="dev" />
+
+    <f:view contentType="text/html" encoding="UTF-8" locale="#{language.locale}">
+        <!-- define metadata should on the above -->
+        <ui:insert name="metadata" />
+
+        <h:head id="head">
+            <meta charset="utf-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+            <meta name="description" content=""/>
+            <meta name="author" content=""/>
+
+            <title>
+                <ui:insert name="title">#{page.name ne 'index' ? i18n[page.name += '.title'] : ''}</ui:insert>
+                    #{page.name ne 'index' ? ' | ' : ''}#{i18n['this.name']}
+            </title>
+
+            <ui:include src="/WEB-INF/templates/includes/head-resources.xhtml" />
+        </h:head>
+
+        <h:body id="#{page.name}" ph:data-unloadmessage="#{i18n['general.unloadmessage']}">
+
+            <noscript>
+                <div class="warning-padding" />
+                <div class="warning-message">
+                    #{i18n['this.name']} works best with JavaScript enabled. 
+                    <strong>
+                        <a href="http://www.enable-javascript.com" rel="nofollow">
+                            How to enable JavaScript in your browser?
+                        </a>
+                    </strong>
+                </div>
+            </noscript>
+
+            <o:conditionalComment if="lte IE 8">
+                <div>
+                    #{i18n['this.name']} works best with a modern browser. 
+                    <strong>
+                        <a href="http://browsehappy.com" rel="nofollow">
+                            Browse Happy. Upgrade your browser today!
+                        </a>
+                    </strong>
+                </div>
+            </o:conditionalComment>
+
+            <header>
+                <ui:include src="/WEB-INF/templates/includes/nav-header.xhtml" />
+            </header>
+
+            <main>
+                <div class="container">
+                    <ui:insert name="content" />
+                </div>
+            </main>
+
+            <footer class="centered-content">
+                <nav>
+                    <ui:insert name="nav-footer">
+                        <ui:include src="/WEB-INF/templates/includes/nav-footer.xhtml" />
+                    </ui:insert>
+                </nav>
+
+                <p><small>Made with <i class=" glyphicon glyphicon-heart"></i> by #{i18n['this.owner']} &copy; #{of:formatDate(now, 'yyyy')}</small></p>
+
+            </footer>
+
+            <!-- JavaScript Placed at the end of the document so the pages load faster -->
+            <ui:include src="/WEB-INF/templates/includes/body-resources.xhtml" />
+
+        </h:body>
+    </f:view>
+</html>

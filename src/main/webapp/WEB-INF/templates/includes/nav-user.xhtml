@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ul class="nav navbar-nav navbar-right nav-pills">
+        
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <h:graphicImage library="images" name="flags/#{language.code}.svg" width="24" height="18" /> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <ui:repeat value="#{language.othres}" var="other">
+                    <li>
+                        <h:commandLink action="#{language.switchTo(other)}">
+                            <h:graphicImage styleClass="flag" library="images" name="flags/#{other}.svg" width="24" height="18" />
+                        </h:commandLink>
+                    </li>
+                </ui:repeat>
+            </ul>
+        </li>
+    </ul>
+</ui:composition>
