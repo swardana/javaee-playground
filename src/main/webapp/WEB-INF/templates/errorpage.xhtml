@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/templates/layouts.xhtml">
+
+    <ui:define name="content">
+
+        <f:view transient="true">
+
+            <section>
+                <p>
+                    <h:outputFormat value="#{i18n[page.name += '.paragraph.1']}" escape="false">
+                        <f:param value="#{of:formatNumber(session.maxInactiveInterval / 60, '#')}" />
+                    </h:outputFormat>
+                </p>
+
+                <p>
+                    <o:outputFormat value="#{i18n[page.name += '.paragraph.2']}" escape="false">
+                        <o:param><h:link value="#{i18n['home.title']}" outcome="/index" /></o:param>
+                    </o:outputFormat>
+                </p>
+            </section>
+
+            <ui:insert name="errorcontent" />
+
+            <h:outputScript rendered="#{facesContext.partialViewContext.ajaxRequest}">
+                // Scroll back to left top, for the case the page was scrolled halfway or so.
+                scrollTo(0, 0);
+            </h:outputScript>
+        </f:view>
+
+    </ui:define>
+
+</ui:composition>

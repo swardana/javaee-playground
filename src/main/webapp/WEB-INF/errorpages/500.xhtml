@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:o="http://omnifaces.org/ui"
+                template="/WEB-INF/templates/errorpage.xhtml">
+
+    <ui:define name="errorcontent">
+        <!-- while the PROJECT_STAGE is Development show this -->
+        <ui:fragment rendered="#{dev}">
+
+            <o:importFunctions type="org.omnifaces.util.Faces" />
+
+            <section>
+                <h2>Detail <small>(only shown during development mode)</small></h2>
+                <ul>
+                    <li>Exception: <code>#{requestScope['javax.servlet.error.message']}</code></li>
+                    <li>Request URI: <code><a href="#{fromURL}">#{fromURL}</a></code></li>
+                    <li>Ajax request: <code>#{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</code></li>
+                    <li>User agent: <code>#{header['user-agent']}</code></li>
+                </ul>
+                <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre>
+            </section>
+        </ui:fragment>
+    </ui:define>
+</ui:composition>
