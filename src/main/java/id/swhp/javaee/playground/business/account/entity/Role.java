@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,8 +35,8 @@ public class Role {
     private Long id;
 
     @NotNull
-    @Size(max = 50)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleName name;
 
     @Size(max = 150)
     private String note;
@@ -45,6 +47,10 @@ public class Role {
     public Role() {
     }
 
+    public Role(RoleName name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
@@ -53,11 +59,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
+    public RoleName getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(RoleName name) {
         this.name = name;
     }
 
@@ -72,12 +78,12 @@ public class Role {
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
-    
+
     public void addAccount(Account account) {
         this.accounts.add(account);
         account.setRole(this);
     }
-    
+
     public void removeAccount(Account account) {
         this.accounts.remove(account);
         account.setRole(this);
