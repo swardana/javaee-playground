@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -27,7 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "role")
+@NamedQueries({
+    @NamedQuery(name = Role.FIND_BY_NAME, query = "select r from Role r where r.name = :roleName")
+})
 public class Role {
+
+    public static final String FIND_BY_NAME = "Role.findByName";
 
     @Id
     @GeneratedValue(generator = "role_id_seq", strategy = GenerationType.SEQUENCE)
