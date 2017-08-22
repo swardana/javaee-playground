@@ -89,3 +89,5 @@ CREATE TABLE borrowed_book(
     returned_date DATE,
     note VARCHAR(250)
 );
+
+INSERT INTO ROLE(name) VALUES('ADMIN'), ('MEMBER');
