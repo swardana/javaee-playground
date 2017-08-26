@@ -31,7 +31,7 @@ public class AccountStore {
                             .setParameter("email", email).getSingleResult()
             );
         } catch (NoResultException e) {
-            this.logger.log(Level.INFO, "Can't find Account by email ", e);
+            this.logger.log(Level.INFO, "Can't find Account by email " + email, e);
             return Optional.empty();
         }
     }
@@ -43,7 +43,7 @@ public class AccountStore {
                             .setParameter("username", username).getSingleResult()
             );
         } catch (NoResultException e) {
-            this.logger.log(Level.INFO, "Can't find Account by email ", e);
+            this.logger.log(Level.INFO, "Can't find Account by username " + username, e);
             return Optional.empty();
         }
     }

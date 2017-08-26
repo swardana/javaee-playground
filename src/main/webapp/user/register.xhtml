@@ -14,7 +14,7 @@
 
         <div class="panel panel-default col-md-6 col-md-offset-3">
             <div class="panel-body">
-                <h2 class="centered-content">#{i18n['register.title']}</h2>
+                <h2 class="centered-content">#{i18n['user.header.register']}</h2>
 
                 <h:form id="register" styleClass="form-horizontal">
 
@@ -26,82 +26,81 @@
                     <div class="form-group">
                         <h:outputLabel for="email" 
                                        styleClass="col-sm-2 control-label" 
-                                       value="#{i18n['general.email']}" />
+                                       title="#{i18n['user.input.email.tooltip']}"
+                                       value="#{i18n['user.input.email.label']}" />
                         <div class="col-sm-10">
-                            <h:inputText id="email" 
+                            <h:inputText id="email"
+                                         ph:type="email"
                                          styleClass="form-control" 
                                          value="#{register.email}" 
-                                         ph:placeholder="#{i18n['general.email']}" 
-                                         required="true" 
-                                         requiredMessage="#{i18n['user.message.required.email']}">
-                                <o:validator validatorId="javax.faces.RegularExpression" 
-                                             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-                                             message="#{i18n['user.message.validator.email']}"/>
-                                <!--<o:validator validatorId="duplicateEmailValidator" />-->
+                                         ph:placeholder="#{i18n['user.input.email.placeholder']}" 
+                                         required="true">
+                                <o:validator validatorId="duplicateEmailValidator" />
                             </h:inputText>
-                            <h:message id="m_email" for="email" errorClass="label label-danger" />
+                            <h:message id="m_email" for="email" errorClass="help-block" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <h:outputLabel for="username" 
                                        styleClass="col-sm-2 control-label" 
-                                       value="#{i18n['general.username']}" />
+                                       title="#{i18n['user.input.username.tooltip']}"
+                                       value="#{i18n['user.input.username.label']}" />
                         <div class="col-sm-10">
                             <h:inputText id="username" 
                                          styleClass="form-control" 
                                          autocomplete="false" 
                                          value="#{register.username}" 
-                                         ph:placeholder="#{i18n['general.username']}" 
-                                         required="true" 
-                                         requiredMessage="#{i18n['user.message.required.username']}">
-                                <!--<o:validator validatorId="duplicateUsernameValidator" />-->
+                                         ph:placeholder="#{i18n['user.input.username.placeholder']}" 
+                                         required="true">
+                                <o:validator validatorId="duplicateUsernameValidator" />
                             </h:inputText>
-                            <h:message id="m_username" for="username" errorClass="label label-danger" />
+                            <h:message id="m_username" for="username" errorClass="help-block" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <h:outputLabel for="password" 
                                        styleClass="col-sm-2 control-label" 
-                                       value="#{i18n['general.password']}" />
+                                       title="#{i18n['user.input.password.tooltip']}"
+                                       value="#{i18n['user.input.password.label']}" />
                         <div class="col-sm-10">
                             <h:inputSecret id="password" 
                                            styleClass="form-control" 
                                            value="#{register.password}" 
-                                           ph:placeholder="#{i18n['general.password']}"  
-                                           required="true" 
-                                           requiredMessage="#{i18n['user.message.required.password']}">
+                                           ph:placeholder="#{i18n['user.input.password.placeholder']}"  
+                                           required="true">
                                 <o:validateEqual id="equal" 
                                                  components="password confirm" 
-                                                 message="#{i18n['user.message.validator.password']}" 
+                                                 message="#{i18n['confirmPasswordValidator']}" 
                                                  showMessageFor="password" />
                             </h:inputSecret>
-                            <h:message id="m_password" for="password" errorClass="label label-danger" />
+                            <h:message id="m_password" for="password" errorClass="help-block" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <h:outputLabel for="confirm" 
-                                       styleClass="col-sm-2 control-label" 
-                                       value="#{i18n['general.confirmPassword']}" />
+                                       styleClass="col-sm-2 control-label"
+                                       title="#{i18n['user.input.confirmPassword.tooltip']}"
+                                       value="#{i18n['user.input.confirmPassword.label']}" />
                         <div class="col-sm-10">
                             <h:inputSecret id="confirm" 
                                            styleClass="form-control" 
                                            binding="#{confirmPassword}" 
-                                           ph:placeholder="#{i18n['general.confirmPassword']}" 
-                                           required="true" 
-                                           requiredMessage="#{i18n['user.message.required.password']}">
+                                           ph:placeholder="#{i18n['user.input.confirmPassword.label']}" 
+                                           required="true">
                                 <f:ajax event="blur" execute="password confirm" render="m_password m_confirm" />
                             </h:inputSecret>
-                            <h:message id="m_confirm" for="confirm" errorClass="label label-danger" />
+                            <h:message id="m_confirm" for="confirm" errorClass="help-block" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class=" centered-content">
                             <h:commandButton id="register" 
-                                             value="#{i18n['user.register']}" 
+                                             value="#{i18n['user.button.register.label']}" 
+                                             title="#{i18n['user.button.register.tooltip']}"
                                              action="#{register.process()}" 
                                              styleClass="btn btn-success" />
                         </div>

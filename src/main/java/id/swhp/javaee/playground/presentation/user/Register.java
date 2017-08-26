@@ -1,6 +1,10 @@
 package id.swhp.javaee.playground.presentation.user;
 
+import static org.omnifaces.util.Messages.addFlashGlobalInfo;
+
+import id.swhp.javaee.playground.business.account.boundary.Registration;
 import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 /**
  *
@@ -14,8 +18,12 @@ public class Register {
     private String username;
     private String password;
 
+    @Inject
+    Registration registration;
+
     public void process() {
-        // TODO: Process registration user in here.
+        this.registration.createAccount(email, username, password);
+        addFlashGlobalInfo("user.message.info.registered");
     }
 
     public String getEmail() {
