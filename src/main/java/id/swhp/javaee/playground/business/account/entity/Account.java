@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
@@ -35,7 +37,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "account", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"username", "email"})
 })
+@NamedQueries({
+    @NamedQuery(name = Account.FIND_BY_EMAIL, query = "select a from Account a where a.email = :email"),
+    @NamedQuery(name = Account.FIND_BY_USERNAME, query = "select a from Account a where a.username = :username")
+})
 public class Account {
+    
+    public static final String FIND_BY_EMAIL = "Account.findByEmail";
+    public static final String FIND_BY_USERNAME = "Account.findByUsername";
 
     @Id
     @GeneratedValue(generator = "account_id_seq", strategy = GenerationType.SEQUENCE)
