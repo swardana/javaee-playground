@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:o="http://omnifaces.org/ui"
+                template="/WEB-INF/templates/layouts.xhtml">
+
+    <ui:define name="content">
+
+        <div class="panel panel-default col-md-6 col-md-offset-3">
+            <div class="panel-body">
+                <h2 class="centered-content">#{i18n['user.header.login']}</h2>
+
+                <h:form id="login" styleClass="form-horizontal">
+
+                    <o:messages globalOnly="true" 
+                                infoClass="alert alert-success" 
+                                errorClass="alert alert-error" 
+                                warnClass="alert alert-warning" />
+
+                    <div class="form-group">
+                        <h:outputLabel for="username" 
+                                       title="#{i18n['user.input.username.tooltip']}"
+                                       styleClass="col-sm-2 control-label" 
+                                       value="#{i18n['user.input.username.label']}" />
+                        <div class="col-sm-10">
+                            <h:inputText id="username" 
+                                         styleClass="form-control" 
+                                         value="#{login.username}" 
+                                         ph:placeholder="#{i18n['user.input.username.placeholder']}" 
+                                         required="true">
+                                <o:validator validatorId="verifiedAccountValidator" />
+                            </h:inputText>                                    
+                            <h:message id="m_username" 
+                                       for="username" 
+                                       errorClass="help-block" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel for="password" 
+                                       title="#{i18n['user.input.password.tooltip']}"
+                                       styleClass="col-sm-2 control-label" 
+                                       value="#{i18n['user.input.password.label']}" />
+                        <div class="col-sm-10">
+                            <h:inputSecret id="password" 
+                                           styleClass="form-control" 
+                                           value="#{login.password}" 
+                                           ph:placeholder="#{i18n['user.input.password.placeholder']}" 
+                                           required="true"/>
+                            <h:message id="m_password" 
+                                       for="password" 
+                                       errorClass="help-block" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <h:selectBooleanCheckbox id="rememberMe" value="#{login.remember}"/>
+                            &nbsp;
+                            <h:outputLabel for="rememberMe" 
+                                           title="#{i18n['user.input.rememberme.tooltip']}"
+                                           value="#{i18n['user.input.rememberme.label']}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="centered-content">
+                            <h:commandButton styleClass="btn btn-success"
+                                             title="#{i18n['user.button.login.tooltip']}"
+                                             value="#{i18n['user.button.login.label']}" 
+                                             action="#{login.submit()}" />
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
