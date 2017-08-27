@@ -26,6 +26,13 @@
             <scope>provided</scope>
         </dependency>
         
+        <!-- Security API + Implementation, Soteria -->
+        <dependency>
+            <groupId>org.glassfish.soteria</groupId>
+            <artifactId>javax.security.enterprise</artifactId>
+            <version>1.0-b07</version>
+        </dependency>
+        
         <!-- Omnifaces, develop JSF never easier without Omnifaces -->
         <dependency>
             <groupId>org.omnifaces</groupId>
